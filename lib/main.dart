@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//task 8
+//task 9
 
 void main() {
   runApp(
@@ -8,14 +8,14 @@ void main() {
         body: Container(
           height: double.infinity,
           width: double.infinity,
-          color: Color.fromARGB(24, 236, 25, 10),
+          color: Color.fromARGB(71, 224, 22, 89),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(
-                "assets/images/k.jpg",
-                width: 200,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(100),
+                child: Image.asset("assets/images/k.jpg", width: 200),
               ),
               TextButton(
                 style: TextButton.styleFrom(
