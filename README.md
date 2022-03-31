@@ -1,5 +1,5 @@
-# task 6
+# task 7
 
 ## Screenshot
 
-![screen](Screenshots/06_OutlinedButton.png)
+![screen](Screenshots/07_IconButton.png)
