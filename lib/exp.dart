@@ -69,7 +69,7 @@ void main() {
 }
 */
 //task 4
-
+/*
 void main() {
   runApp(
     MaterialApp(
@@ -94,7 +94,7 @@ void main() {
     ),
   );
 }
-
+*/
 
 //task 5
 
@@ -224,9 +224,7 @@ void main() {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(100),
-                child: Image.network(
-                    "https://ii.ct-stc.com/2/logos/empresas/2018/05/28/ksquare-labs-sa-de-cv-31D722171E816499222821581thumbnail.jpg",
-                    width: 200),
+                child: Image.asset("assets/images/k.jpg", width: 200),
               ),
               TextButton(
                 style: TextButton.styleFrom(
