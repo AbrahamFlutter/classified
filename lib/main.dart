@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//task 4
+//task 5
 
 void main() {
   runApp(
@@ -10,14 +10,16 @@ void main() {
           width: double.infinity,
           color: Color.fromARGB(255, 255, 255, 255),
           child: Center(
-            child: ElevatedButton(
+            child: TextButton(
               style: TextButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 122, 29, 0),
-                primary: Color.fromARGB(255, 255, 255, 255),
+                primary: Color.fromARGB(255, 78, 3, 255),
                 padding: const EdgeInsets.all(16.0),
               ),
               onPressed: () {},
-              child: Text("Click"),
+              child: Text(
+                "Click me",
+                style: TextStyle(fontSize: 40),
+              ),
             ),
           ),
         ),
