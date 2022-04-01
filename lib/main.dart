@@ -5,130 +5,56 @@ void main() {
   runApp(
     MaterialApp(
       home: Scaffold(
-        body: SafeArea(
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          color: Color.fromARGB(255, 255, 255, 255),
           child: Column(
-            //main column
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Image.asset(
+                "assets/images/tomato2.jpg",
+              ),
               Container(
-                //Row 1
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    //container1
                     Container(
-                      color: Color.fromARGB(255, 0, 255, 200),
-                      width: 150,
-                      height: 150,
-                      margin: EdgeInsets.all(10),
+                      padding: EdgeInsets.all(12.0),
                       child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "assets/images/facebook.png",
-                              width: 40,
-                            ),
-                            Text("Facebook"),
-                          ]),
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Red Tomato",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          Text("healthy"),
+                        ],
+                      ),
                     ),
-                    //Container 2
-                    Container(
-                      color: Color.fromARGB(255, 0, 255, 200),
-                      width: 150,
-                      height: 150,
-                      margin: EdgeInsets.all(10),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "assets/images/twitter.png",
-                              width: 40,
-                            ),
-                            Text("Twitter"),
-                          ]),
-                    ),
+                    Icon(
+                      Icons.apple_sharp,
+                      size: 60,
+                    )
                   ],
                 ),
               ),
               Container(
-                //Row 2
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    //container3
-                    Container(
-                      color: Color.fromARGB(255, 0, 255, 200),
-                      width: 150,
-                      height: 150,
-                      margin: EdgeInsets.all(10),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "assets/images/instagram.png",
-                              width: 40,
-                            ),
-                            Text("Instagram"),
-                          ]),
-                    ),
-                    //Container 4
-                    Container(
-                      color: Color.fromARGB(255, 0, 255, 200),
-                      width: 150,
-                      height: 150,
-                      margin: EdgeInsets.all(10),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "assets/images/youtube.png",
-                              width: 40,
-                            ),
-                            Text("YouTube"),
-                          ]),
-                    ),
-                  ],
+                padding: EdgeInsets.all(12.0),
+                child: Text(
+                  """Es cierto, soy muy nervioso. Tanto, que a veces pueda parecer que me siento gobernado por los impulsos. Pero no estoy loco. Loco, no, porque soy capaz de razonar. También de escucharlo todo, de oír cosas que nadie consigue oír. Y eso es porque mis sentidos se han agudizado. Y para demostrarles que no estoy loco, les contaré ahora, más tranquilo, mi relato:
+
+Llevaba tiempo observando al viejo. Le quería mucho, deben creerme, pero me molestaba, me irritaba, y no podía frenar ese sentimiento. Era una tortura, y todo, por culpa de ese ojo, un ojo velado con el que miraba y no veía, que me clavaba y me ponía nervioso. Un ojo como de buitre, azulado, frío. ¡Fue por culpa de ese miserable ojo! Deben creerme. Yo no quería nada del viejo. Ni su dinero. Ni él me insultó nunca. Fue por culpa de ese maldito ojo, que me trastocaba por completo.
+                  """,
+                  style: TextStyle(fontSize: 16),
                 ),
               ),
-              Container(
-                //Row 3
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    //container5
-                    Container(
-                      color: Color.fromARGB(255, 0, 255, 200),
-                      width: 150,
-                      height: 150,
-                      margin: EdgeInsets.all(10),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "assets/images/spotify.png",
-                              width: 40,
-                            ),
-                            Text("Spotify"),
-                          ]),
-                    ),
-                    //Container 6
-                    Container(
-                      color: Color.fromARGB(255, 0, 255, 200),
-                      width: 150,
-                      height: 150,
-                      margin: EdgeInsets.all(10),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "assets/images/pinterest.png",
-                              width: 40,
-                            ),
-                            Text("Pinterest"),
-                          ]),
-                    ),
-                  ],
-                ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text(" Share ", style: TextStyle(fontSize: 25)),
               )
             ],
           ),
