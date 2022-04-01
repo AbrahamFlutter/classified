@@ -7,27 +7,51 @@ void main() {
       home: Scaffold(
         body: SafeArea(
           child: Center(
-            child: OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                  primary: Color.fromARGB(255, 0, 0, 0),
-                  padding: EdgeInsets.symmetric(vertical: 10.0),
-                  fixedSize: Size.fromWidth(320)),
-              onPressed: () {},
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            child: Container(
+              height: 250,
+              width: 250,
+              color: Color.fromARGB(176, 35, 250, 82),
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    height: 50,
-                    width: 50,
-                    child: Image.asset(
-                      "assets/images/google.png",
-                    ),
+                  CircleAvatar(
+                    backgroundImage: AssetImage("assets/images/k.jpg"),
+                    radius: 28,
                   ),
                   Text(
-                    "Continue with Google",
-                    style: TextStyle(fontSize: 20),
+                    "itk.com",
+                    style: TextStyle(fontSize: 40),
                   ),
+                  Text("Folow us"),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        TextButton(
+                          onPressed: () {},
+                          child: Image.asset(
+                            "assets/images/facebook.png",
+                            width: 40,
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          child: Image.asset(
+                            "assets/images/twitter.png",
+                            width: 40,
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          child: Image.asset(
+                            "assets/images/instagram.png",
+                            width: 40,
+                          ),
+                        )
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
