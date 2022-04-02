@@ -1,72 +1,90 @@
 import 'package:flutter/material.dart';
 
-//task 17
+//task 18
+
 void main() {
   runApp(
     MaterialApp(
       home: Scaffold(
-        body: SafeArea(
-          child: Center(
-            child: Container(
-              height: 300,
-              width: 300,
-              //color: Color.fromARGB(176, 35, 250, 82),
-              decoration: BoxDecoration(
-                border: Border.all(
-                    color: Color.fromARGB(221, 117, 117, 117), width: 2),
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          color: Color.fromARGB(192, 7, 173, 43),
+          child: Stack(
+            children: [
+              Container(
+                width: double.infinity,
+                height: double.infinity,
+                child: Image.asset(
+                  "assets/images/tomato.jpg",
+                  fit: BoxFit.cover,
+                ),
               ),
-              child: Stack(
-                children: [
-                  Container(
-                    width: 300,
-                    height: 300,
-                    child: Image.asset(
-                      "assets/images/travel.jpeg",
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      child: Icon(Icons.favorite,
-                          color: Color.fromARGB(225, 255, 0, 76)),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      width: double.infinity,
-                      height: 100,
-                      color: Color.fromARGB(166, 240, 249, 255),
-                      child: Row(children: [
-                        Container(
-                          padding: EdgeInsets.only(left: 10.0),
-                          child: CircleAvatar(
-                            backgroundImage: AssetImage("assets/images/k.jpg"),
-                            radius: 28,
-                          ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  height: 200,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Color.fromARGB(255, 253, 253, 253),
+                            padding: EdgeInsets.symmetric(vertical: 10.0),
+                            fixedSize: Size.fromWidth(320)),
+                        onPressed: () {},
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 50,
+                              width: 50,
+                              child: Image.asset(
+                                "assets/images/google.png",
+                              ),
+                            ),
+                            Text(
+                              "Continue with Google",
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.black),
+                            ),
+                          ],
                         ),
-                        Container(
-                          padding: EdgeInsets.only(left: 15.0, right: 100),
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "itk.com",
-                                  style: TextStyle(fontSize: 22),
-                                ),
-                                Text("Folow us"),
-                              ]),
+                      ),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Color.fromARGB(255, 255, 255, 255),
+                            padding: EdgeInsets.symmetric(vertical: 10.0),
+                            fixedSize: Size.fromWidth(320)),
+                        onPressed: () {},
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 50,
+                              width: 50,
+                              child: Image.asset(
+                                "assets/images/facebook.png",
+                              ),
+                            ),
+                            Text(
+                              "Continue with Facebook",
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.black),
+                            ),
+                          ],
                         ),
-                        Icon(Icons.more_vert)
-                      ]),
-                    ),
+                      ),
+                      Text("consult our terms and services\n",
+                          style: TextStyle(fontSize: 16, color: Colors.white))
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
         ),
       ),
