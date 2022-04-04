@@ -2,4 +2,4 @@
 
 ## Screenshot
 
-![screen](Screenshots/21_list_view_product.png)
+![screen](Screenshots/21_list_view_product.PNG)
