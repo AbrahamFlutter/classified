@@ -1,5 +1,5 @@
-# task 21
+# task 22
 
 ## Screenshot
 
-![screen](Screenshots/21_list_view_product.PNG)
+![screen](Screenshots/22_list_view_SocialCard.png)

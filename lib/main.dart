@@ -5,273 +5,199 @@ void main() {
     MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-            backgroundColor: Color.fromARGB(255, 168, 0, 28),
+            backgroundColor: Color.fromARGB(255, 255, 8, 8),
             centerTitle: true,
-            title: Text("Shop")),
+            title: Text("Instagram")),
         body: SafeArea(
-          child: Container(
-            margin: EdgeInsets.all(15.0),
-            child: ListView(children: [
+          child: ListView(
+            children: [
               Container(
-                height: 70,
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      OutlinedButton(
-                        onPressed: () {},
-                        style: OutlinedButton.styleFrom(
-                            shape: StadiumBorder(),
-                            backgroundColor: Color.fromARGB(255, 0, 0, 0)),
-                        child: Text(
-                          "Trending",
-                          style: TextStyle(
-                            color: Color.fromARGB(224, 255, 254, 254),
+                height: 385,
+                width: 350,
+                margin: EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                      color: Color.fromARGB(221, 117, 117, 117), width: 2),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Row(
+                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.only(left: 10.0),
+                            margin: EdgeInsets.all(5.0),
+                            child: CircleAvatar(
+                              backgroundImage:
+                                  AssetImage("assets/images/k.jpg"),
+                              radius: 28,
+                            ),
                           ),
-                        ),
+                          Container(
+                            padding: EdgeInsets.only(left: 15.0, right: 150),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "itk.com",
+                                    style: TextStyle(fontSize: 22),
+                                  ),
+                                  Text("Folow us"),
+                                ]),
+                          ),
+                          Icon(Icons.more_vert)
+                        ]),
+                    Container(
+                      width: 350,
+                      child: Image.asset(
+                        "assets/images/travel.jpeg",
+                        fit: BoxFit.cover,
                       ),
-                      OutlinedButton(
-                        onPressed: () {},
-                        style: OutlinedButton.styleFrom(
-                            shape: StadiumBorder(),
-                            backgroundColor: Color.fromARGB(255, 0, 0, 0)),
-                        child: Text(
-                          "Popular",
-                          style: TextStyle(
-                            color: Color.fromARGB(224, 255, 254, 254),
+                    ),
+                    Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              primary: Colors.black,
+                            ),
+                            onPressed: () {},
+                            child: Row(children: [
+                              Icon(Icons.favorite),
+                              Text("Like"),
+                            ]),
                           ),
-                        ),
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              primary: Colors.black,
+                            ),
+                            onPressed: () {},
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.chat_bubble_outlined,
+                                ),
+                                Text("Comment"),
+                              ],
+                            ),
+                          ),
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              primary: Colors.black,
+                            ),
+                            onPressed: () {},
+                            child: Row(
+                              children: [
+                                Icon(Icons.share),
+                                Text(
+                                  "Share",
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                      OutlinedButton(
-                        onPressed: () {},
-                        style: OutlinedButton.styleFrom(
-                            shape: StadiumBorder(),
-                            backgroundColor: Color.fromARGB(255, 0, 0, 0)),
-                        child: Text(
-                          "Computers",
-                          style: TextStyle(
-                            color: Color.fromARGB(224, 255, 254, 254),
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                height: 385,
+                width: 350,
+                margin: EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                      color: Color.fromARGB(221, 117, 117, 117), width: 2),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Row(
+                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.only(left: 10.0),
+                            margin: EdgeInsets.all(5.0),
+                            child: CircleAvatar(
+                              backgroundImage:
+                                  AssetImage("assets/images/k.jpg"),
+                              radius: 28,
+                            ),
                           ),
-                        ),
+                          Container(
+                            padding: EdgeInsets.only(left: 15.0, right: 150),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "itk.com",
+                                    style: TextStyle(fontSize: 22),
+                                  ),
+                                  Text("Folow us"),
+                                ]),
+                          ),
+                          Icon(Icons.more_vert)
+                        ]),
+                    Container(
+                      width: 350,
+                      child: Image.asset(
+                        "assets/images/travel.jpeg",
+                        fit: BoxFit.cover,
                       ),
-                      OutlinedButton(
-                        onPressed: () {},
-                        style: OutlinedButton.styleFrom(
-                            shape: StadiumBorder(),
-                            backgroundColor: Color.fromARGB(255, 0, 0, 0)),
-                        child: Text(
-                          "Mobiles",
-                          style: TextStyle(
-                            color: Color.fromARGB(224, 255, 254, 254),
+                    ),
+                    Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              primary: Colors.black,
+                            ),
+                            onPressed: () {},
+                            child: Row(children: [
+                              Icon(Icons.favorite),
+                              Text("Like"),
+                            ]),
                           ),
-                        ),
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              primary: Colors.black,
+                            ),
+                            onPressed: () {},
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.chat_bubble_outlined,
+                                ),
+                                Text("Comment"),
+                              ],
+                            ),
+                          ),
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              primary: Colors.black,
+                            ),
+                            onPressed: () {},
+                            child: Row(
+                              children: [
+                                Icon(Icons.share),
+                                Text(
+                                  "Share",
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                    ]),
+                    )
+                  ],
+                ),
               ),
-              Container(
-                width: double.infinity,
-                height: 100,
-                margin: EdgeInsets.all(8),
-                color: Color.fromARGB(64, 168, 0, 28),
-                child: Row(children: [
-                  Container(
-                      height: 80,
-                      padding: EdgeInsets.only(left: 10.0),
-                      margin: EdgeInsets.all(10.0),
-                      child: Image.asset("assets/images/violin.jpg",
-                          fit: BoxFit.cover)),
-                  Container(
-                    padding: EdgeInsets.only(left: 15.0),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Violin for Sale",
-                            style: TextStyle(fontSize: 22),
-                          ),
-                          Text("3 min. ago"),
-                          Text(
-                            "\$5000",
-                            style: TextStyle(
-                              fontSize: 30,
-                              color: Color.fromARGB(255, 168, 0, 28),
-                            ),
-                          )
-                        ]),
-                  ),
-                ]),
-              ),
-              Container(
-                width: double.infinity,
-                height: 100,
-                margin: EdgeInsets.all(8),
-                color: Color.fromARGB(64, 168, 0, 28),
-                child: Row(children: [
-                  Container(
-                      height: 80,
-                      padding: EdgeInsets.only(left: 10.0),
-                      margin: EdgeInsets.all(10.0),
-                      child: Image.asset("assets/images/violin.jpg",
-                          fit: BoxFit.cover)),
-                  Container(
-                    padding: EdgeInsets.only(left: 15.0),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Violin for Sale",
-                            style: TextStyle(fontSize: 22),
-                          ),
-                          Text("3 min. ago"),
-                          Text(
-                            "\$5000",
-                            style: TextStyle(
-                              fontSize: 30,
-                              color: Color.fromARGB(255, 168, 0, 28),
-                            ),
-                          )
-                        ]),
-                  ),
-                ]),
-              ),
-              Container(
-                width: double.infinity,
-                height: 100,
-                margin: EdgeInsets.all(8),
-                color: Color.fromARGB(64, 168, 0, 28),
-                child: Row(children: [
-                  Container(
-                      height: 80,
-                      padding: EdgeInsets.only(left: 10.0),
-                      margin: EdgeInsets.all(10.0),
-                      child: Image.asset("assets/images/violin.jpg",
-                          fit: BoxFit.cover)),
-                  Container(
-                    padding: EdgeInsets.only(left: 15.0),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Violin for Sale",
-                            style: TextStyle(fontSize: 22),
-                          ),
-                          Text("3 min. ago"),
-                          Text(
-                            "\$5000",
-                            style: TextStyle(
-                              fontSize: 30,
-                              color: Color.fromARGB(255, 168, 0, 28),
-                            ),
-                          )
-                        ]),
-                  ),
-                ]),
-              ),
-              Container(
-                width: double.infinity,
-                height: 100,
-                margin: EdgeInsets.all(8),
-                color: Color.fromARGB(64, 168, 0, 28),
-                child: Row(children: [
-                  Container(
-                      height: 80,
-                      padding: EdgeInsets.only(left: 10.0),
-                      margin: EdgeInsets.all(10.0),
-                      child: Image.asset("assets/images/violin.jpg",
-                          fit: BoxFit.cover)),
-                  Container(
-                    padding: EdgeInsets.only(left: 15.0),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Violin for Sale",
-                            style: TextStyle(fontSize: 22),
-                          ),
-                          Text("3 min. ago"),
-                          Text(
-                            "\$5000",
-                            style: TextStyle(
-                              fontSize: 30,
-                              color: Color.fromARGB(255, 168, 0, 28),
-                            ),
-                          )
-                        ]),
-                  ),
-                ]),
-              ),
-              Container(
-                width: double.infinity,
-                height: 100,
-                margin: EdgeInsets.all(8),
-                color: Color.fromARGB(64, 168, 0, 28),
-                child: Row(children: [
-                  Container(
-                      height: 80,
-                      padding: EdgeInsets.only(left: 10.0),
-                      margin: EdgeInsets.all(10.0),
-                      child: Image.asset("assets/images/violin.jpg",
-                          fit: BoxFit.cover)),
-                  Container(
-                    padding: EdgeInsets.only(left: 15.0),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Violin for Sale",
-                            style: TextStyle(fontSize: 22),
-                          ),
-                          Text("3 min. ago"),
-                          Text(
-                            "\$5000",
-                            style: TextStyle(
-                              fontSize: 30,
-                              color: Color.fromARGB(255, 168, 0, 28),
-                            ),
-                          )
-                        ]),
-                  ),
-                ]),
-              ),
-              Container(
-                width: double.infinity,
-                height: 100,
-                margin: EdgeInsets.all(8),
-                color: Color.fromARGB(64, 168, 0, 28),
-                child: Row(children: [
-                  Container(
-                      height: 80,
-                      padding: EdgeInsets.only(left: 10.0),
-                      margin: EdgeInsets.all(10.0),
-                      child: Image.asset("assets/images/violin.jpg",
-                          fit: BoxFit.cover)),
-                  Container(
-                    padding: EdgeInsets.only(left: 15.0),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Violin for Sale",
-                            style: TextStyle(fontSize: 22),
-                          ),
-                          Text("3 min. ago"),
-                          Text(
-                            "\$5000",
-                            style: TextStyle(
-                              fontSize: 30,
-                              color: Color.fromARGB(255, 168, 0, 28),
-                            ),
-                          )
-                        ]),
-                  ),
-                ]),
-              ),
-            ]),
+            ],
           ),
         ),
       ),
