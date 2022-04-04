@@ -6,85 +6,76 @@ void main() {
   runApp(
     MaterialApp(
       home: Scaffold(
-        body: Container(
-          height: double.infinity,
-          width: double.infinity,
-          color: Color.fromARGB(192, 7, 173, 43),
-          child: Stack(
-            children: [
-              Container(
-                width: double.infinity,
-                height: double.infinity,
-                child: Image.asset(
-                  "assets/images/tomato.jpg",
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  height: 200,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            primary: Color.fromARGB(255, 253, 253, 253),
-                            padding: EdgeInsets.symmetric(vertical: 10.0),
-                            fixedSize: Size.fromWidth(320)),
-                        onPressed: () {},
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              height: 50,
-                              width: 50,
-                              child: Image.asset(
-                                "assets/images/google.png",
-                              ),
-                            ),
-                            Text(
-                              "Continue with Google",
-                              style:
-                                  TextStyle(fontSize: 20, color: Colors.black),
-                            ),
-                          ],
-                        ),
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            primary: Color.fromARGB(255, 255, 255, 255),
-                            padding: EdgeInsets.symmetric(vertical: 10.0),
-                            fixedSize: Size.fromWidth(320)),
-                        onPressed: () {},
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              height: 50,
-                              width: 50,
-                              child: Image.asset(
-                                "assets/images/facebook.png",
-                              ),
-                            ),
-                            Text(
-                              "Continue with Facebook",
-                              style:
-                                  TextStyle(fontSize: 20, color: Colors.black),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Text("consult our terms and services\n",
-                          style: TextStyle(fontSize: 16, color: Colors.white))
-                    ],
+        appBar: AppBar(
+            backgroundColor: Color.fromARGB(255, 168, 0, 28),
+            centerTitle: true,
+            title: Text("Contact form")),
+        body: SafeArea(
+          child: Container(
+            margin: EdgeInsets.all(15.0),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: "Name",
+                      border: OutlineInputBorder(),
+                    ),
+                    keyboardType: TextInputType.name,
                   ),
-                ),
-              ),
-            ],
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: "E-mail",
+                      border: OutlineInputBorder(),
+                    ),
+                    keyboardType: TextInputType.emailAddress,
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: "Mobile",
+                      border: OutlineInputBorder(),
+                    ),
+                    keyboardType: TextInputType.number,
+                  ),
+                  TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      labelText: "Password",
+                      border: OutlineInputBorder(),
+                    ),
+                    keyboardType: TextInputType.text,
+                  ),
+                  Text("Gender"),
+                  RadioListTile(
+                      title: Text("Male"),
+                      value: "man",
+                      groupValue: null,
+                      onChanged: null),
+                  RadioListTile(
+                      title: Text("Female"),
+                      value: "woman",
+                      groupValue: null,
+                      onChanged: null),
+                  Container(
+                    height: 100,
+                  ),
+                  CheckboxListTile(
+                    checkColor: Color.fromARGB(255, 255, 31, 31),
+                    // fillColor: MaterialStateProperty.resolveWith(Colors.red),
+                    value: false,
+                    onChanged: (bool? value) {},
+                    title: Text("By signing up, I accept terms and conditions"),
+                    controlAffinity: ListTileControlAffinity.leading,
+                  ),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          primary: Color.fromARGB(255, 168, 0, 28),
+                          padding: EdgeInsets.symmetric(vertical: 10.0),
+                          fixedSize: Size.fromWidth(500)),
+                      onPressed: () {},
+                      child: Text("Submit"))
+                ]),
           ),
         ),
       ),
