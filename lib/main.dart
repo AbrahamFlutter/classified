@@ -1,204 +1,331 @@
 import 'package:flutter/material.dart';
 
+// task 23
 void main() {
   runApp(
     MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-            backgroundColor: Color.fromARGB(255, 255, 8, 8),
+            backgroundColor: Color.fromARGB(255, 255, 0, 76),
             centerTitle: true,
-            title: Text("Instagram")),
+            title: Text("Shop")),
         body: SafeArea(
-          child: ListView(
-            children: [
-              Container(
-                height: 385,
-                width: 350,
-                margin: EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                      color: Color.fromARGB(221, 117, 117, 117), width: 2),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Row(
-                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            padding: EdgeInsets.only(left: 10.0),
-                            margin: EdgeInsets.all(5.0),
-                            child: CircleAvatar(
-                              backgroundImage:
-                                  AssetImage("assets/images/k.jpg"),
-                              radius: 28,
-                            ),
+          child: GridView(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  childAspectRatio: 0.90),
+              children: [
+                Container(
+                  height: 300,
+                  width: 300,
+                  //color: Color.fromARGB(176, 35, 250, 82),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        color: Color.fromARGB(221, 117, 117, 117), width: 2),
+                  ),
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: 300,
+                        height: 300,
+                        child: Image.asset(
+                          "assets/images/violin.jpg",
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: Container(
+                          padding: EdgeInsets.all(10),
+                          child: Icon(
+                            Icons.favorite_border,
+                            color: Color.fromARGB(225, 255, 0, 76),
+                            size: 40,
                           ),
-                          Container(
-                            padding: EdgeInsets.only(left: 15.0, right: 150),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          width: double.infinity,
+                          height: 80,
+                          color: Color.fromARGB(166, 240, 249, 255),
+                          child: Container(
+                            padding: EdgeInsets.only(left: 15.0, right: 100),
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "itk.com",
-                                    style: TextStyle(fontSize: 22),
+                                    "White violin",
+                                    style: TextStyle(fontSize: 25),
                                   ),
-                                  Text("Folow us"),
+                                  Text("on sale"),
                                 ]),
                           ),
-                          Icon(Icons.more_vert)
-                        ]),
-                    Container(
-                      width: 350,
-                      child: Image.asset(
-                        "assets/images/travel.jpeg",
-                        fit: BoxFit.cover,
+                        ),
                       ),
-                    ),
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          TextButton(
-                            style: TextButton.styleFrom(
-                              primary: Colors.black,
-                            ),
-                            onPressed: () {},
-                            child: Row(children: [
-                              Icon(Icons.favorite),
-                              Text("Like"),
-                            ]),
-                          ),
-                          TextButton(
-                            style: TextButton.styleFrom(
-                              primary: Colors.black,
-                            ),
-                            onPressed: () {},
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.chat_bubble_outlined,
-                                ),
-                                Text("Comment"),
-                              ],
-                            ),
-                          ),
-                          TextButton(
-                            style: TextButton.styleFrom(
-                              primary: Colors.black,
-                            ),
-                            onPressed: () {},
-                            child: Row(
-                              children: [
-                                Icon(Icons.share),
-                                Text(
-                                  "Share",
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                    ],
+                  ),
+                ),
+                Container(
+                  //color: Color.fromARGB(176, 35, 250, 82),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        color: Color.fromARGB(221, 117, 117, 117), width: 2),
+                  ),
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: 300,
+                        height: 300,
+                        child: Image.asset(
+                          "assets/images/violin.jpg",
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                height: 385,
-                width: 350,
-                margin: EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                      color: Color.fromARGB(221, 117, 117, 117), width: 2),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Row(
-                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            padding: EdgeInsets.only(left: 10.0),
-                            margin: EdgeInsets.all(5.0),
-                            child: CircleAvatar(
-                              backgroundImage:
-                                  AssetImage("assets/images/k.jpg"),
-                              radius: 28,
-                            ),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: Container(
+                          padding: EdgeInsets.all(10),
+                          child: Icon(
+                            Icons.favorite_border,
+                            color: Color.fromARGB(225, 255, 0, 76),
+                            size: 40,
                           ),
-                          Container(
-                            padding: EdgeInsets.only(left: 15.0, right: 150),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          width: double.infinity,
+                          height: 80,
+                          color: Color.fromARGB(166, 240, 249, 255),
+                          child: Container(
+                            padding: EdgeInsets.only(left: 15.0, right: 100),
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "itk.com",
-                                    style: TextStyle(fontSize: 22),
+                                    "White violin",
+                                    style: TextStyle(fontSize: 25),
                                   ),
-                                  Text("Folow us"),
+                                  Text("on sale"),
                                 ]),
                           ),
-                          Icon(Icons.more_vert)
-                        ]),
-                    Container(
-                      width: 350,
-                      child: Image.asset(
-                        "assets/images/travel.jpeg",
-                        fit: BoxFit.cover,
+                        ),
                       ),
-                    ),
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          TextButton(
-                            style: TextButton.styleFrom(
-                              primary: Colors.black,
-                            ),
-                            onPressed: () {},
-                            child: Row(children: [
-                              Icon(Icons.favorite),
-                              Text("Like"),
-                            ]),
-                          ),
-                          TextButton(
-                            style: TextButton.styleFrom(
-                              primary: Colors.black,
-                            ),
-                            onPressed: () {},
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.chat_bubble_outlined,
-                                ),
-                                Text("Comment"),
-                              ],
-                            ),
-                          ),
-                          TextButton(
-                            style: TextButton.styleFrom(
-                              primary: Colors.black,
-                            ),
-                            onPressed: () {},
-                            child: Row(
-                              children: [
-                                Icon(Icons.share),
-                                Text(
-                                  "Share",
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
+                Container(
+                  //color: Color.fromARGB(176, 35, 250, 82),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        color: Color.fromARGB(221, 117, 117, 117), width: 2),
+                  ),
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: 300,
+                        height: 300,
+                        child: Image.asset(
+                          "assets/images/violin.jpg",
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: Container(
+                          padding: EdgeInsets.all(10),
+                          child: Icon(
+                            Icons.favorite_border,
+                            color: Color.fromARGB(225, 255, 0, 76),
+                            size: 40,
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          width: double.infinity,
+                          height: 80,
+                          color: Color.fromARGB(166, 240, 249, 255),
+                          child: Container(
+                            padding: EdgeInsets.only(left: 15.0, right: 100),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "White violin",
+                                    style: TextStyle(fontSize: 25),
+                                  ),
+                                  Text("on sale"),
+                                ]),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  //color: Color.fromARGB(176, 35, 250, 82),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        color: Color.fromARGB(221, 117, 117, 117), width: 2),
+                  ),
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: 300,
+                        height: 300,
+                        child: Image.asset(
+                          "assets/images/violin.jpg",
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: Container(
+                          padding: EdgeInsets.all(10),
+                          child: Icon(
+                            Icons.favorite_border,
+                            color: Color.fromARGB(225, 255, 0, 76),
+                            size: 40,
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          width: double.infinity,
+                          height: 80,
+                          color: Color.fromARGB(166, 240, 249, 255),
+                          child: Container(
+                            padding: EdgeInsets.only(left: 15.0, right: 100),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "White violin",
+                                    style: TextStyle(fontSize: 25),
+                                  ),
+                                  Text("on sale"),
+                                ]),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  //color: Color.fromARGB(176, 35, 250, 82),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        color: Color.fromARGB(221, 117, 117, 117), width: 2),
+                  ),
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: 300,
+                        height: 300,
+                        child: Image.asset(
+                          "assets/images/violin.jpg",
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: Container(
+                          padding: EdgeInsets.all(10),
+                          child: Icon(
+                            Icons.favorite_border,
+                            color: Color.fromARGB(225, 255, 0, 76),
+                            size: 40,
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          width: double.infinity,
+                          height: 80,
+                          color: Color.fromARGB(166, 240, 249, 255),
+                          child: Container(
+                            padding: EdgeInsets.only(left: 15.0, right: 100),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "White violin",
+                                    style: TextStyle(fontSize: 25),
+                                  ),
+                                  Text("on sale"),
+                                ]),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  //color: Color.fromARGB(176, 35, 250, 82),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        color: Color.fromARGB(221, 117, 117, 117), width: 2),
+                  ),
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: 300,
+                        height: 300,
+                        child: Image.asset(
+                          "assets/images/violin.jpg",
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: Container(
+                          padding: EdgeInsets.all(10),
+                          child: Icon(
+                            Icons.favorite_border,
+                            color: Color.fromARGB(225, 255, 0, 76),
+                            size: 40,
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          width: double.infinity,
+                          height: 80,
+                          color: Color.fromARGB(166, 240, 249, 255),
+                          child: Container(
+                            padding: EdgeInsets.only(left: 15.0, right: 100),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "White violin",
+                                    style: TextStyle(fontSize: 25),
+                                  ),
+                                  Text("on sale"),
+                                ]),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ]),
         ),
       ),
     ),
