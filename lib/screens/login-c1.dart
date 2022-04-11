@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:itktask/custom-widget/myButton.dart';
+import 'package:itktask/custom-widget/myTextButton.dart';
+import 'package:itktask/screens/ads-listing.dart';
+import 'package:itktask/screens/register-c2.dart';
 import '../custom-widget/form.dart';
 
 class Login extends StatelessWidget {
@@ -62,9 +65,14 @@ class Login extends StatelessWidget {
                   children: [
                     SelecInput(selection: InputType.Email),
                     SelecInput(selection: InputType.Password),
-                    SelecInput(selection: InputType.FullName),
-                    SelecInput(selection: InputType.MobileNum),
-                    myButton(buttonText: "Register Acount"),
+                    myButton(
+                      buttonText: "Login",
+                      screenToGo: AdsListing(),
+                    ),
+                    myTextButton(
+                      buttonText: "Don't have any Account?",
+                      screenToGo: Register(),
+                    )
                   ]),
             ),
           ],

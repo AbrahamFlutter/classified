@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../screens/register-c2.dart';
 
 class myButton extends StatelessWidget {
   final String buttonText;
-  const myButton({Key? key, required this.buttonText}) : super(key: key);
+  var screenToGo;
+  myButton({Key? key, required this.buttonText, required this.screenToGo})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 44,
+      height: 50,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Get.to(screenToGo);
+        },
         child: Text(buttonText, style: TextStyle(fontSize: 20)),
         style: ElevatedButton.styleFrom(
           primary: const Color.fromARGB(225, 255, 0, 76),
