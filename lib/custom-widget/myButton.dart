@@ -19,7 +19,7 @@ class myButton extends StatelessWidget {
         },
         child: Text(buttonText, style: TextStyle(fontSize: 20)),
         style: ElevatedButton.styleFrom(
-          primary: const Color.fromARGB(225, 255, 0, 76),
+          primary: const Color.fromARGB(225, 255, 102, 14),
           //padding: EdgeInsets.symmetric(vertical: 10.0),
           //fixedSize: Size.
         ),

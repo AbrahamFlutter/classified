@@ -3,23 +3,26 @@ import 'package:flutter/material.dart';
 class SelecInput extends StatelessWidget {
   final InputType selection;
   final String? formText;
-  FloatingLabelBehavior? options;
-  SelecInput({Key? key, required this.selection, this.formText, this.options})
-      : super(key: key);
+  FloatingLabelBehavior? _options;
+  SelecInput({
+    Key? key,
+    required this.selection,
+    this.formText,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     if (formText != null) {
-      options = FloatingLabelBehavior.always;
+      _options = FloatingLabelBehavior.always;
     } else {
-      options = FloatingLabelBehavior.auto;
+      _options = FloatingLabelBehavior.auto;
     }
     switch (selection) {
       case InputType.Email:
         return TextField(
           decoration: InputDecoration(
             labelText: "Email Address",
-            floatingLabelBehavior: options,
+            floatingLabelBehavior: _options,
             hintText: formText,
             hintStyle: TextStyle(fontWeight: FontWeight.bold),
             border: const OutlineInputBorder(),
@@ -38,8 +41,9 @@ class SelecInput extends StatelessWidget {
         return TextField(
           decoration: InputDecoration(
             labelText: "Full Name",
-            floatingLabelBehavior: options,
+            floatingLabelBehavior: _options,
             hintText: formText,
+            hintStyle: TextStyle(fontWeight: FontWeight.bold),
             border: OutlineInputBorder(),
           ),
           keyboardType: TextInputType.name,
@@ -50,7 +54,7 @@ class SelecInput extends StatelessWidget {
         return TextField(
           decoration: InputDecoration(
             labelText: "Mobile phone",
-            floatingLabelBehavior: options,
+            floatingLabelBehavior: _options,
             hintText: formText,
             hintStyle: const TextStyle(fontWeight: FontWeight.bold),
             border: OutlineInputBorder(),
@@ -59,9 +63,12 @@ class SelecInput extends StatelessWidget {
         );
 
       case InputType.Title:
-        return const TextField(
+        return TextField(
           decoration: InputDecoration(
             labelText: "Title",
+            floatingLabelBehavior: _options,
+            hintText: formText,
+            hintStyle: const TextStyle(fontWeight: FontWeight.bold),
             border: OutlineInputBorder(),
           ),
           keyboardType: TextInputType.text,
@@ -69,19 +76,25 @@ class SelecInput extends StatelessWidget {
 
       case InputType.Price:
         // TODO: Handle this case.
-        return const TextField(
+        return TextField(
           decoration: InputDecoration(
             labelText: "Price",
+            floatingLabelBehavior: _options,
+            hintText: formText,
+            hintStyle: const TextStyle(fontWeight: FontWeight.bold),
             border: OutlineInputBorder(),
           ),
           keyboardType: TextInputType.text,
         );
 
       case InputType.Description:
-        return const TextField(
+        return TextField(
           maxLines: 5,
           decoration: InputDecoration(
             labelText: "Description",
+            floatingLabelBehavior: _options,
+            hintText: formText,
+            hintStyle: const TextStyle(fontWeight: FontWeight.bold),
             border: OutlineInputBorder(),
           ),
           keyboardType: TextInputType.text,

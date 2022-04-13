@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:itktask/custom-widget/myButton.dart';
 import 'package:itktask/custom-widget/myTextButton.dart';
-import 'package:itktask/screens/ads-listing.dart';
+import 'package:itktask/screens/ads-listing-c3.dart';
 import 'package:itktask/screens/register-c2.dart';
 import '../custom-widget/form.dart';
 
@@ -19,37 +19,24 @@ class Login extends StatelessWidget {
           children: [
             Container(
               width: double.infinity,
-              height: 260,
+              height: 400,
               child: Stack(
                 children: [
                   Container(
                     width: double.infinity,
-                    height: 260,
+                    height: 400,
                     child: Image.asset(
-                      "assets/images/whiteHouse.jpg",
+                      "assets/images/background.png",
                       fit: BoxFit.cover,
                     ),
                   ),
                   Container(
-                    height: 260,
+                    height: 400,
                     padding: EdgeInsets.all(12.0),
-                    color: Color.fromARGB(158, 255, 255, 255),
-                    // ignore: prefer_const_constructors
                     child: Center(
-                      child: const ListTile(
-                        contentPadding: EdgeInsets.symmetric(horizontal: 30),
-                        leading: Icon(
-                          Icons.chair,
-                          size: 90,
-                          color: Color.fromARGB(225, 255, 0, 76),
-                        ),
-                        title: Text(
-                          "\nSOFA WORLD",
-                          style: TextStyle(
-                              fontSize: 28, fontWeight: FontWeight.bold),
-                        ),
-                        subtitle: Text("Buy at any place",
-                            style: TextStyle(fontWeight: FontWeight.bold)),
+                      child: Image.asset(
+                        "assets/images/logo.png",
+                        width: 200,
                       ),
                     ),
                   ),
@@ -57,7 +44,7 @@ class Login extends StatelessWidget {
               ),
             ),
             Container(
-              height: 500,
+              height: 300,
               margin:
                   const EdgeInsets.symmetric(vertical: 10.0, horizontal: 18.0),
               child: Column(

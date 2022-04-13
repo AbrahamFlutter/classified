@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:itktask/screens/product-detail.dart';
+import 'package:get/get.dart';
 
 class ProductCard extends StatelessWidget {
   final String imageSourse, productName, productPrice;
@@ -11,58 +13,53 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 300,
-      width: 300,
-      //color: Color.fromARGB(176, 35, 250, 82),
-      // decoration: BoxDecoration(
-      //   border: Border.all(color: Color.fromARGB(221, 117, 117, 117), width: 2),
-      // ),
-      child: Stack(
-        children: [
-          Container(
-            width: 300,
-            height: 300,
-            child: Image.asset(
-              imageSourse,
-              fit: BoxFit.cover,
-            ),
-          ),
-          Align(
-            alignment: Alignment.topRight,
-            child: Container(
-              padding: EdgeInsets.all(10),
-              child: Icon(
-                Icons.favorite_border,
-                color: Color.fromARGB(225, 255, 0, 76),
-                size: 40,
+    return GestureDetector(
+      onTap: () {
+        Get.to(ProductDetail(
+            productTitle: productName,
+            productPrice: productPrice,
+            productImage: imageSourse,
+            productTimeAgo: "2 days ago"));
+      },
+      child: Container(
+        height: 300,
+        width: 500,
+        child: Stack(
+          children: [
+            Container(
+              width: 300,
+              height: 500,
+              margin: EdgeInsets.all(10.0),
+              child: Image.asset(
+                imageSourse,
+                fit: BoxFit.cover,
               ),
             ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              width: double.infinity,
-              height: 80,
-              color: Color.fromARGB(117, 0, 0, 0),
+            Align(
+              alignment: Alignment.bottomCenter,
               child: Container(
-                padding: EdgeInsets.only(left: 15.0),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        productName,
-                        style: TextStyle(fontSize: 25, color: Colors.white),
-                      ),
-                      Text(productPrice,
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 255, 137, 3))),
-                    ]),
+                width: double.infinity,
+                height: 70,
+                color: Color.fromARGB(117, 0, 0, 0),
+                child: Container(
+                  padding: EdgeInsets.only(left: 15.0),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          productName,
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        ),
+                        Text(productPrice,
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 255, 137, 3))),
+                      ]),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
