@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:itktask/custom-widget/myButton.dart';
 
 class ProductDetail extends StatelessWidget {
   final String productTitle, productPrice, productImage, productTimeAgo;
@@ -14,9 +13,9 @@ class ProductDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(backgroundColor: Colors.black),
-        body: SafeArea(
-            child: Container(
+      appBar: AppBar(backgroundColor: Colors.black),
+      body: SafeArea(
+        child: Container(
           padding: EdgeInsets.all(12.0),
           height: 700,
           child: Column(
@@ -54,9 +53,23 @@ class ProductDetail extends StatelessWidget {
                 "Used model 2012, excellent conditions and price the best offer can you get rigth now!",
                 style: TextStyle(fontSize: 20),
               ),
-              myButton(buttonText: "Contact Seller", screenToGo: Null)
+              SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Get.to(Null);
+                  },
+                  child: Text("Contact Seller", style: TextStyle(fontSize: 20)),
+                  style: ElevatedButton.styleFrom(
+                    primary: const Color.fromARGB(225, 255, 102, 14),
+                  ),
+                ),
+              ),
             ],
           ),
-        )));
+        ),
+      ),
+    );
   }
 }

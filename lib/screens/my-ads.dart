@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:itktask/custom-widget/product-list.dart';
-//import 'package:project_name/screens/product-detail.dart';
 
 class MyAds extends StatelessWidget {
   const MyAds({Key? key}) : super(key: key);

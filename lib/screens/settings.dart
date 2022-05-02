@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:itktask/screens/edit-profile-c4.dart';
-import 'package:itktask/screens/my-ads-c5.dart';
+import 'package:itktask/screens/edit-profile.dart';
+import 'package:itktask/screens/my-ads.dart';
 
 class Settings extends StatelessWidget {
   const Settings({Key? key}) : super(key: key);

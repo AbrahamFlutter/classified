@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:itktask/custom-widget/product-card.dart';
 import 'package:get/get.dart';
-import 'package:itktask/screens/create-ad-c6.dart';
-import 'package:itktask/screens/settings-c10.dart';
+import 'package:itktask/screens/create-ad.dart';
+import 'package:itktask/screens/settings.dart';
 
 class AdsListing extends StatelessWidget {
   const AdsListing({Key? key}) : super(key: key);
@@ -33,6 +33,7 @@ class AdsListing extends StatelessWidget {
                 crossAxisSpacing: 10,
                 childAspectRatio: 0.70),
             children: const [
+              //fututebuilder
               ProductCard(
                   imageSourse: "assets/images/mobile_2.jpeg",
                   productName: "Samsung",

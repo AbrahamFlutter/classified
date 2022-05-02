@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../screens/edit-ad-c7.dart';
+import '../screens/edit-ad.dart';
 //import 'package:project_name/screens/product-detail.dart';
 
 class ProductList extends StatelessWidget {
