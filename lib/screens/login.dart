@@ -19,6 +19,9 @@ class _LoginState extends State<Login> {
   TextEditingController _emailCtrl = TextEditingController();
   TextEditingController _passwordCtrl = TextEditingController();
   final box = GetStorage();
+  final nameData = GetStorage();
+  final emailData = GetStorage();
+  final mobileData = GetStorage();
   loginAPI() async {
     var response =
         await http.post(Uri.parse("https://adlisting.herokuapp.com/auth/login"),
@@ -29,7 +32,15 @@ class _LoginState extends State<Login> {
     print(json.decode(response.body));
     print(response.statusCode);
     if (response.statusCode == 200) {
+      var data = json.decode(response.body);
+      var token = data["data"]["token"];
+      box.write("token", token);
+      nameData.write("name", data["data"]["user"]["name"]);
+      emailData.write("email", data["data"]["user"]["email"]);
+      mobileData.write("mobile", data["data"]["user"]["mobile"]);
       Get.offAll(AdsListing());
+    } else {
+      print("Some faliure, try again");
     }
   }
 

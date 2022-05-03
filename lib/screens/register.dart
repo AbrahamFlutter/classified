@@ -4,6 +4,8 @@ import 'package:itktask/screens/login.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import 'ads-listing.dart';
+
 class Register extends StatefulWidget {
   const Register({
     Key? key,
@@ -32,6 +34,9 @@ class _RegisterState extends State<Register> {
     print("___________________________________________\n");
     print(json.decode(response.body));
     print(response.statusCode);
+    if (response.statusCode == 200) {
+      Get.offAll(AdsListing());
+    }
   }
 
   @override

@@ -18,12 +18,14 @@ class _EditProfileState extends State<EditProfile> {
   final TextEditingController _nameCtrl = TextEditingController();
   final TextEditingController _emailCtrl = TextEditingController();
   final TextEditingController _mobileCtrl = TextEditingController();
-  var _data;
-  var token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjVlYmI4Y2I4ZmRlOGI3YWFiMDliMmIiLCJpYXQiOjE2NTExNzYwOTF9.HSLfTnZHYqwxIYq0an1uz_ypWEo3C9xZR2q44Xhyqs8"; //stdin.readLineSync();
+
   String _imageProfile = "";
   final box = GetStorage();
+  var nameData = GetStorage();
+  var emailData = GetStorage();
+  var mobileData = GetStorage();
   profileAPI() async {
+    var token = box.read("token");
     var response = await http.patch(
         Uri.parse("https://adlisting.herokuapp.com/user/"),
         headers: {
@@ -40,8 +42,6 @@ class _EditProfileState extends State<EditProfile> {
         ));
     print("___________________________________________\n");
     print(json.decode(response.body));
-    _data = json.decode(response.body);
-    print(_data[1]);
   }
 
   pickImage() async {
@@ -53,15 +53,6 @@ class _EditProfileState extends State<EditProfile> {
     } else {
       print("no image picked");
     }
-  }
-
-  writeToken() {
-    var token = box.write("token", "abcd");
-    print(token);
-  }
-
-  readToken() {
-    box.read("token");
   }
 
   @override
@@ -116,10 +107,10 @@ class _EditProfileState extends State<EditProfile> {
                   children: [
                     TextField(
                       controller: _nameCtrl,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         labelText: "Full Name",
                         floatingLabelBehavior: FloatingLabelBehavior.always,
-                        hintText: "Sundaravel",
+                        hintText: nameData.read("name"),
                         hintStyle: TextStyle(fontWeight: FontWeight.bold),
                         border: OutlineInputBorder(),
                       ),
@@ -127,10 +118,10 @@ class _EditProfileState extends State<EditProfile> {
                     ),
                     TextField(
                       controller: _emailCtrl,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         labelText: "Email Address",
                         floatingLabelBehavior: FloatingLabelBehavior.always,
-                        hintText: "sundar@appmaking.com",
+                        hintText: emailData.read("email"),
                         hintStyle: TextStyle(fontWeight: FontWeight.bold),
                         border: OutlineInputBorder(),
                       ),
@@ -138,10 +129,10 @@ class _EditProfileState extends State<EditProfile> {
                     ),
                     TextField(
                       controller: _mobileCtrl,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         labelText: "Mobile phone",
                         floatingLabelBehavior: FloatingLabelBehavior.always,
-                        hintText: "+919876543210",
+                        hintText: "+" + mobileData.read("mobile"),
                         hintStyle: TextStyle(fontWeight: FontWeight.bold),
                         border: OutlineInputBorder(),
                       ),

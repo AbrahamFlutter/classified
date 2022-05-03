@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:itktask/screens/product-detail.dart';
 import 'package:get/get.dart';
 
-class ProductCard extends StatelessWidget {
+class ProductCard extends StatefulWidget {
   final String imageSourse, productName, productPrice;
   const ProductCard(
       {Key? key,
@@ -12,13 +12,18 @@ class ProductCard extends StatelessWidget {
       : super(key: key);
 
   @override
+  State<ProductCard> createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Get.to(ProductDetail(
-            productTitle: productName,
-            productPrice: productPrice,
-            productImage: imageSourse,
+            productTitle: widget.productName,
+            productPrice: widget.productPrice,
+            productImage: widget.imageSourse,
             productTimeAgo: "2 days ago"));
       },
       child: Container(
@@ -31,7 +36,7 @@ class ProductCard extends StatelessWidget {
               height: 500,
               margin: EdgeInsets.all(10.0),
               child: Image.asset(
-                imageSourse,
+                widget.imageSourse,
                 fit: BoxFit.cover,
               ),
             ),
@@ -48,10 +53,10 @@ class ProductCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          productName,
+                          widget.productName,
                           style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
-                        Text(productPrice,
+                        Text(widget.productPrice,
                             style: TextStyle(
                                 color: Color.fromARGB(255, 255, 137, 3))),
                       ]),
