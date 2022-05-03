@@ -35,13 +35,13 @@ class ProductDetail extends StatelessWidget {
                 width: double.infinity,
                 height: 300,
                 margin: EdgeInsets.all(10.0),
-                child: Image.asset(productImage, fit: BoxFit.cover),
+                child: Image.network(productImage, fit: BoxFit.cover),
               ),
               Container(
                   child: Row(
                 children: [
                   Icon(Icons.person),
-                  Text("Ali"),
+                  Text("sundar"),
                   SizedBox(
                     width: 10,
                   ),

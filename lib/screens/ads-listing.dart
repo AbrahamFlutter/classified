@@ -19,7 +19,10 @@ class _AdsListingState extends State<AdsListing> {
     var response = await http.get(
         Uri.parse("https://adlisting.herokuapp.com/ads"),
         headers: {"Accept": "application/json"});
-    ads = json.decode(response.body);
+    setState(() {
+      ads = json.decode(response.body);
+    });
+
     print(ads["data"][1]["title"]);
     return "Success!";
   }
@@ -50,46 +53,18 @@ class _AdsListingState extends State<AdsListing> {
       ),
       body: SafeArea(
         child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 200,
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 10,
                 childAspectRatio: 0.70),
-            itemCount: ads.length,
+            itemCount: ads["data"].length,
             itemBuilder: (BuildContext context, int index) {
               return ProductCard(
-                  imageSourse: ads["data"][index]["images"][1],
+                  imageSourse: ads["data"][index]["images"][0],
                   productName: ads["data"][index]["title"],
-                  productPrice: ads["data"][index]["price"]);
-            }
-            // children: const [
-            //   //fututebuilder
-            //   ProductCard(
-            //       imageSourse: "assets/images/mobile_2.jpeg",
-            //       productName: "Samsung",
-            //       productPrice: "\$8000"),
-            //   ProductCard(
-            //       imageSourse: "assets/images/mobile_1.jpeg",
-            //       productName: "iPhone For Sale ",
-            //       productPrice: "\$33000"),
-            //   ProductCard(
-            //       imageSourse: "assets/images/car_2.jpeg",
-            //       productName: "Maruti swift 2020 for sale",
-            //       productPrice: "\$8000"),
-            //   ProductCard(
-            //       imageSourse: "assets/images/hourse_1.jpg",
-            //       productName: "Farm Land",
-            //       productPrice: "\$120000"),
-            //   ProductCard(
-            //       imageSourse: "assets/images/car_1.jpeg",
-            //       productName: "Used Benz for sale",
-            //       productPrice: "\$8000"),
-            //   ProductCard(
-            //       imageSourse: "assets/images/apple-macbook-pro-m1.jpeg",
-            //       productName: "Used Macbook for sale",
-            //       productPrice: "\$8000")
-            // ]),
-            ),
+                  productPrice: ads["data"][index]["price"].toString());
+            }),
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {

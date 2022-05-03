@@ -35,7 +35,7 @@ class _ProductCardState extends State<ProductCard> {
               width: 300,
               height: 500,
               margin: EdgeInsets.all(10.0),
-              child: Image.asset(
+              child: Image.network(
                 widget.imageSourse,
                 fit: BoxFit.cover,
               ),
