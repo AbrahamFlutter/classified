@@ -7,6 +7,8 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:get_storage/get_storage.dart';
 
+import '../util/constants.dart';
+
 class EditProfile extends StatefulWidget {
   const EditProfile({Key? key}) : super(key: key);
 
@@ -21,13 +23,13 @@ class _EditProfileState extends State<EditProfile> {
 
   String _imageProfile = "";
   final box = GetStorage();
-  var nameData = GetStorage();
-  var emailData = GetStorage();
-  var mobileData = GetStorage();
+  final imgProfileData = GetStorage();
+  final nameData = GetStorage();
+  final emailData = GetStorage();
+  final mobileData = GetStorage();
   profileAPI() async {
     var token = box.read("token");
-    var response = await http.patch(
-        Uri.parse("https://adlisting.herokuapp.com/user/"),
+    var response = await http.patch(Uri.parse(Constants().apiURL + "/user/"),
         headers: {
           "Content-type": "application/json",
           "Authorization": "Bearer $token"
@@ -50,6 +52,16 @@ class _EditProfileState extends State<EditProfile> {
       setState(() {
         _imageProfile = image.path;
       });
+      //upload image
+      var request = http.MultipartRequest(
+          "POST", Uri.parse("https://adlisting.herokuapp.com/upload/profile"));
+      request.files
+          .add(await http.MultipartFile.fromPath("avatar", image.path));
+      var response = await request.send();
+      var resData = await response.stream.toBytes();
+      var resString = String.fromCharCodes(resData);
+      var jsonObj = json.decode(resString);
+      print(jsonObj["data"]["path"]);
     } else {
       print("no image picked");
     }
@@ -78,8 +90,8 @@ class _EditProfileState extends State<EditProfile> {
                     child: _imageProfile != ""
                         ? Image.file(File(_imageProfile),
                             fit: BoxFit.cover, width: 150, height: 150)
-                        : Image.asset(
-                            "assets/images/sundar.png",
+                        : Image.network(
+                            imgProfileData.read("imgProfile"),
                             fit: BoxFit.cover,
                             width: 150,
                             height: 150,

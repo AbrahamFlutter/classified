@@ -6,6 +6,8 @@ import 'package:itktask/screens/settings.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:itktask/util/constants.dart';
+
 class AdsListing extends StatefulWidget {
   const AdsListing({Key? key}) : super(key: key);
 
@@ -16,8 +18,7 @@ class AdsListing extends StatefulWidget {
 class _AdsListingState extends State<AdsListing> {
   var ads = {};
   Future adsApi() async {
-    var response = await http.get(
-        Uri.parse("https://adlisting.herokuapp.com/ads"),
+    var response = await http.get(Uri.parse(Constants().apiURL + "/ads"),
         headers: {"Accept": "application/json"});
     setState(() {
       ads = json.decode(response.body);

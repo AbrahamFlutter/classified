@@ -22,6 +22,7 @@ class _LoginState extends State<Login> {
   final nameData = GetStorage();
   final emailData = GetStorage();
   final mobileData = GetStorage();
+  final imgProfileData = GetStorage();
   loginAPI() async {
     var response =
         await http.post(Uri.parse("https://adlisting.herokuapp.com/auth/login"),
@@ -38,6 +39,9 @@ class _LoginState extends State<Login> {
       nameData.write("name", data["data"]["user"]["name"]);
       emailData.write("email", data["data"]["user"]["email"]);
       mobileData.write("mobile", data["data"]["user"]["mobile"]);
+      mobileData.write("mobile", data["data"]["user"]["mobile"]);
+      imgProfileData.write("imgProfile", data["data"]["user"]["imgURL"]);
+
       Get.offAll(AdsListing());
     } else {
       print("Some faliure, try again");

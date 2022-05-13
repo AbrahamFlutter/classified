@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:itktask/screens/about.dart';
 import 'package:itktask/screens/edit-profile.dart';
 import 'package:itktask/screens/my-ads.dart';
 
@@ -48,10 +49,15 @@ class Settings extends StatelessWidget {
               ),
             ),
           ),
-          Card(
-            child: ListTile(
-              leading: Icon(Icons.person),
-              title: Text("About us"),
+          GestureDetector(
+            onTap: () {
+              Get.to(About());
+            },
+            child: Card(
+              child: ListTile(
+                leading: Icon(Icons.person),
+                title: Text("About us"),
+              ),
             ),
           ),
           Card(

@@ -4,6 +4,7 @@ import 'package:itktask/screens/login.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import '../util/constants.dart';
 import 'ads-listing.dart';
 
 class Register extends StatefulWidget {
@@ -22,15 +23,15 @@ class _RegisterState extends State<Register> {
   TextEditingController _mobileCtrl = TextEditingController();
 
   registerAPI() async {
-    var response = await http.post(
-        Uri.parse("https://adlisting.herokuapp.com/auth/register"),
-        headers: {"Content-type": "application/json"},
-        body: json.encode({
-          "name": _nameCtrl.text,
-          "email": _emailCtrl.text,
-          "mobile": _mobileCtrl.text,
-          "password": _passwordCtrl.text,
-        }));
+    var response =
+        await http.post(Uri.parse(Constants().apiURL + "/auth/register"),
+            headers: {"Content-type": "application/json"},
+            body: json.encode({
+              "name": _nameCtrl.text,
+              "email": _emailCtrl.text,
+              "mobile": _mobileCtrl.text,
+              "password": _passwordCtrl.text,
+            }));
     print("___________________________________________\n");
     print(json.decode(response.body));
     print(response.statusCode);
