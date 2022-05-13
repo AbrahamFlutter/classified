@@ -1,9 +1,43 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:itktask/custom-widget/product-list.dart';
+import 'package:http/http.dart' as http;
 
-class MyAds extends StatelessWidget {
+import '../util/constants.dart';
+
+class MyAds extends StatefulWidget {
   const MyAds({Key? key}) : super(key: key);
+
+  @override
+  State<MyAds> createState() => _MyAdsState();
+}
+
+class _MyAdsState extends State<MyAds> {
+  final nameData = GetStorage();
+  var ads = {};
+  var myAds = {};
+  int j = 0;
+  Future myAdsApi() async {
+    var response = await http.get(Uri.parse(Constants().apiURL + "/ads"),
+        headers: {"Accept": "application/json"});
+
+    setState(() {
+      ads = json.decode(response.body);
+    });
+
+    print(myAds);
+
+    return "Success!";
+  }
+
+  @override
+  void initState() {
+    myAdsApi();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,28 +49,15 @@ class MyAds extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                child: ListView(
-                  children: const [
-                    ProductList(
-                      title: "Android",
-                      price: 4000,
-                      timesAgo: "20 mins ago",
-                      imageURL: "assets/images/mobile_2.jpeg",
-                    ),
-                    ProductList(
-                      title: "iPhone",
-                      price: 20000,
-                      timesAgo: "15 mins ago",
-                      imageURL: "assets/images/mobile_1.jpeg",
-                    ),
-                    ProductList(
-                      title: "Macbook",
-                      price: 40000,
-                      timesAgo: "3 mins ago",
-                      imageURL: "assets/images/apple-macbook-pro-m1.jpeg",
-                    ),
-                  ],
-                ),
+                child: ListView.builder(
+                    itemCount: ads["data"].length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return ProductList(
+                          imageURL: ads["data"][index]["images"][0],
+                          title: ads["data"][index]["title"],
+                          price: ads["data"][index]["price"],
+                          timesAgo: "5 days");
+                    }),
               ),
             ),
           ],

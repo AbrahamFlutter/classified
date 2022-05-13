@@ -42,7 +42,7 @@ class _LoginState extends State<Login> {
       mobileData.write("mobile", data["data"]["user"]["mobile"]);
       imgProfileData.write("imgProfile", data["data"]["user"]["imgURL"]);
 
-      Get.offAll(AdsListing());
+      Get.offAll(const AdsListing());
     } else {
       print("Some faliure, try again");
     }

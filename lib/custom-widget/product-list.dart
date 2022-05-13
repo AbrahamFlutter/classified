@@ -7,7 +7,7 @@ import '../screens/edit-ad.dart';
 class ProductList extends StatelessWidget {
   final String imageURL;
   final String title;
-  final double price;
+  final int price;
   final String timesAgo;
 
   const ProductList({

@@ -31,7 +31,7 @@ class _AdsListingState extends State<AdsListing> {
   @override
   void initState() {
     adsApi();
-    //print(ads);
+    super.initState();
   }
 
   @override
