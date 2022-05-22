@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:itktask/screens/login.dart';
@@ -22,22 +23,14 @@ class _RegisterState extends State<Register> {
   TextEditingController _emailCtrl = TextEditingController();
   TextEditingController _mobileCtrl = TextEditingController();
 
-  registerAPI() async {
-    var response =
-        await http.post(Uri.parse(Constants().apiURL + "/auth/register"),
-            headers: {"Content-type": "application/json"},
-            body: json.encode({
-              "name": _nameCtrl.text,
-              "email": _emailCtrl.text,
-              "mobile": _mobileCtrl.text,
-              "password": _passwordCtrl.text,
-            }));
-    print("___________________________________________\n");
-    print(json.decode(response.body));
-    print(response.statusCode);
-    if (response.statusCode == 200) {
+  registerFirebase() async {
+   FirebaseAuth.instance
+        .createUserWithEmailAndPassword(
+            email: _emailCtrl.text, password: _passwordCtrl.text)
+        .then((value) {
+      print("login successfully ");
       Get.offAll(AdsListing());
-    }
+    }).catchError((e) => print(e));
   }
 
   @override
@@ -116,7 +109,7 @@ class _RegisterState extends State<Register> {
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {
-                          registerAPI();
+                          registerFirebase();
                         },
                         child: Text("Register Now",
                             style: TextStyle(fontSize: 20)),

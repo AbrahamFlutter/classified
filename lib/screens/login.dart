@@ -5,6 +5,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:itktask/screens/ads-listing.dart';
 import 'package:itktask/screens/register.dart';
 import 'package:http/http.dart' as http;
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Login extends StatefulWidget {
   const Login({
@@ -23,29 +24,14 @@ class _LoginState extends State<Login> {
   final emailData = GetStorage();
   final mobileData = GetStorage();
   final imgProfileData = GetStorage();
-  loginAPI() async {
-    var response =
-        await http.post(Uri.parse("https://adlisting.herokuapp.com/auth/login"),
-            headers: {"Content-type": "application/json"},
-            body: json.encode(
-              {"email": _emailCtrl.text, "password": _passwordCtrl.text},
-            ));
-    print(json.decode(response.body));
-    print(response.statusCode);
-    if (response.statusCode == 200) {
-      var data = json.decode(response.body);
-      var token = data["data"]["token"];
-      box.write("token", token);
-      nameData.write("name", data["data"]["user"]["name"]);
-      emailData.write("email", data["data"]["user"]["email"]);
-      mobileData.write("mobile", data["data"]["user"]["mobile"]);
-      mobileData.write("mobile", data["data"]["user"]["mobile"]);
-      imgProfileData.write("imgProfile", data["data"]["user"]["imgURL"]);
-
-      Get.offAll(const AdsListing());
-    } else {
-      print("Some faliure, try again");
-    }
+  loginFirebase() async {
+    FirebaseAuth.instance
+        .signInWithEmailAndPassword(
+            email: _emailCtrl.text, password: _passwordCtrl.text)
+        .then((value) {
+      print("login successfully ");
+      Get.offAll(AdsListing());
+    }).catchError((e) => print(e));
   }
 
   @override
@@ -109,9 +95,7 @@ class _LoginState extends State<Login> {
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {
-                          //Get.offAll(AdsListing());
-
-                          loginAPI();
+                          loginFirebase();
                         },
                         child: Text("Login", style: TextStyle(fontSize: 20)),
                         style: ElevatedButton.styleFrom(

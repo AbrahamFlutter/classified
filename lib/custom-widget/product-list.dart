@@ -21,15 +21,6 @@ class ProductList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      // onTap: () {
-      //   Get.to(ProductDetailScreen(
-      //     ptitle: title,
-      //     pprice: price,
-      //     ptimesAgo: timesAgo,
-      //     pimageURL: imageURL,
-      //     pdescription: "description",
-      //   ));
-      // },
       onTap: () {
         Get.to(EditAd(
           photo: imageURL,

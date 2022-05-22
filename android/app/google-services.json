@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "548974774100",
+    "firebase_url": "https://ksquare-learnig-default-rtdb.firebaseio.com",
+    "project_id": "ksquare-learnig",
+    "storage_bucket": "ksquare-learnig.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:548974774100:android:9fb79cde85465f6868aac1",
+        "android_client_info": {
+          "package_name": "com.example.itktask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "548974774100-0lhla87t8l1e1l8b083i1v9nr4tnq3ba.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqx_4eYJHNhq3vDE-ESdwaYEzHGMtREjI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "548974774100-0lhla87t8l1e1l8b083i1v9nr4tnq3ba.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
