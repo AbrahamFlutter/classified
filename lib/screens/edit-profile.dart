@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:itktask/screens/login.dart';
@@ -20,30 +22,12 @@ class _EditProfileState extends State<EditProfile> {
   final TextEditingController _nameCtrl = TextEditingController();
   final TextEditingController _emailCtrl = TextEditingController();
   final TextEditingController _mobileCtrl = TextEditingController();
-
   String _imageProfile = "";
-  final box = GetStorage();
-  final imgProfileData = GetStorage();
-  final nameData = GetStorage();
-  final emailData = GetStorage();
-  final mobileData = GetStorage();
-  profileAPI() async {
-    var token = box.read("token");
-    var response = await http.patch(Uri.parse(Constants().apiURL + "/user/"),
-        headers: {
-          "Content-type": "application/json",
-          "Authorization": "Bearer $token"
-        },
-        body: json.encode(
-          {
-            "name": _nameCtrl.text,
-            "email": _emailCtrl.text,
-            "mobile": _mobileCtrl.text,
-            "imgURL": "http://site.com/image.png"
-          },
-        ));
-    print("___________________________________________\n");
-    print(json.decode(response.body));
+
+  logOutFirebase() {
+    FirebaseAuth.instance.signOut().then((value) {
+      Get.offAll(Login());
+    });
   }
 
   pickImage() async {
@@ -91,7 +75,7 @@ class _EditProfileState extends State<EditProfile> {
                         ? Image.file(File(_imageProfile),
                             fit: BoxFit.cover, width: 150, height: 150)
                         : Image.network(
-                            imgProfileData.read("imgProfile"),
+                            "imgProfile",
                             fit: BoxFit.cover,
                             width: 150,
                             height: 150,
@@ -122,7 +106,7 @@ class _EditProfileState extends State<EditProfile> {
                       decoration: InputDecoration(
                         labelText: "Full Name",
                         floatingLabelBehavior: FloatingLabelBehavior.always,
-                        hintText: nameData.read("name"),
+                        hintText: "name",
                         hintStyle: TextStyle(fontWeight: FontWeight.bold),
                         border: OutlineInputBorder(),
                       ),
@@ -133,7 +117,7 @@ class _EditProfileState extends State<EditProfile> {
                       decoration: InputDecoration(
                         labelText: "Email Address",
                         floatingLabelBehavior: FloatingLabelBehavior.always,
-                        hintText: emailData.read("email"),
+                        hintText: "email",
                         hintStyle: TextStyle(fontWeight: FontWeight.bold),
                         border: OutlineInputBorder(),
                       ),
@@ -144,7 +128,7 @@ class _EditProfileState extends State<EditProfile> {
                       decoration: InputDecoration(
                         labelText: "Mobile phone",
                         floatingLabelBehavior: FloatingLabelBehavior.always,
-                        hintText: "+" + mobileData.read("mobile"),
+                        hintText: "+" + "mobile",
                         hintStyle: TextStyle(fontWeight: FontWeight.bold),
                         border: OutlineInputBorder(),
                       ),
@@ -154,11 +138,7 @@ class _EditProfileState extends State<EditProfile> {
                       width: double.infinity,
                       height: 50,
                       child: ElevatedButton(
-                        onPressed: () {
-                          //
-
-                          profileAPI();
-                        },
+                        onPressed: () {},
                         child: const Text("Update profile",
                             style: TextStyle(fontSize: 20)),
                         style: ElevatedButton.styleFrom(
@@ -172,7 +152,7 @@ class _EditProfileState extends State<EditProfile> {
                         padding: const EdgeInsets.all(16.0),
                       ),
                       onPressed: () {
-                        Get.to(const Login());
+                        logOutFirebase();
                       },
                       child: const Text(
                         "Log out",

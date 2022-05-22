@@ -6,6 +6,7 @@ import 'package:itktask/screens/login.dart';
 import 'package:itktask/screens/register.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:itktask/screens/validate.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Login(),
+      home: ValidateScreen(),
     );
   }
 }

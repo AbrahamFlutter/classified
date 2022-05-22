@@ -1,11 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:itktask/screens/login.dart';
 import 'dart:convert';
-import 'package:http/http.dart' as http;
-
-import '../util/constants.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'ads-listing.dart';
 
 class Register extends StatefulWidget {
@@ -23,14 +22,26 @@ class _RegisterState extends State<Register> {
   TextEditingController _emailCtrl = TextEditingController();
   TextEditingController _mobileCtrl = TextEditingController();
 
-  registerFirebase() async {
-   FirebaseAuth.instance
+  registerFirebase() {
+    FirebaseAuth.instance
         .createUserWithEmailAndPassword(
             email: _emailCtrl.text, password: _passwordCtrl.text)
         .then((value) {
       print("login successfully ");
+      insetToFirestore();
       Get.offAll(AdsListing());
     }).catchError((e) => print(e));
+  }
+
+  insetToFirestore() {
+    FirebaseFirestore.instance.collection("accounts").add({
+      "uid": FirebaseAuth.instance.currentUser!.uid,
+      "displayName": _nameCtrl.text,
+      "email": _emailCtrl.text,
+      "password": _passwordCtrl.text,
+      "mobile": _mobileCtrl.text,
+      "createdAt": FieldValue.serverTimestamp()
+    });
   }
 
   @override
