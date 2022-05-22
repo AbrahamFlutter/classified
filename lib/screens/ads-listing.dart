@@ -69,7 +69,7 @@ class _AdsListingState extends State<AdsListing> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Get.to(const CreateAd());
+            Get.to(CreateAd());
           },
           backgroundColor: Color.fromARGB(255, 255, 102, 14),
           child: const Icon(Icons.add_a_photo_outlined)),

@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../controllers/ads.dart';
 
 class CreateAd extends StatelessWidget {
-  const CreateAd({Key? key}) : super(key: key);
+  CreateAd({Key? key}) : super(key: key);
 
+  final AdsController _adsController = Get.put(AdsController());
+  final TextEditingController _titleCtrl = TextEditingController();
+  final TextEditingController _priceCtrl = TextEditingController();
+  final TextEditingController _mobileCtrl = TextEditingController();
+  final TextEditingController _descriptionCtrl = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,28 +52,32 @@ class CreateAd extends StatelessWidget {
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  const TextField(
+                  TextField(
+                    controller: _titleCtrl,
                     decoration: InputDecoration(
                       labelText: "Title",
                       border: OutlineInputBorder(),
                     ),
                     keyboardType: TextInputType.text,
                   ),
-                  const TextField(
+                  TextField(
+                    controller: _priceCtrl,
                     decoration: InputDecoration(
                       labelText: "Price",
                       border: OutlineInputBorder(),
                     ),
                     keyboardType: TextInputType.text,
                   ),
-                  const TextField(
+                  TextField(
+                    controller: _mobileCtrl,
                     decoration: InputDecoration(
                       labelText: "Mobile phone",
                       border: OutlineInputBorder(),
                     ),
                     keyboardType: TextInputType.phone,
                   ),
-                  const TextField(
+                  TextField(
+                    controller: _descriptionCtrl,
                     maxLines: 5,
                     decoration: InputDecoration(
                       labelText: "Description",
@@ -77,7 +89,13 @@ class CreateAd extends StatelessWidget {
                     width: double.infinity,
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        _adsController.CreateAd(
+                            _titleCtrl.text,
+                            _priceCtrl.text,
+                            _mobileCtrl.text,
+                            _descriptionCtrl.text);
+                      },
                       child: Text("Submit Ad", style: TextStyle(fontSize: 20)),
                       style: ElevatedButton.styleFrom(
                         primary: const Color.fromARGB(225, 255, 102, 14),
