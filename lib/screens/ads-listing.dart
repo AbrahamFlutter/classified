@@ -8,29 +8,22 @@ import 'dart:convert';
 
 import 'package:itktask/util/constants.dart';
 
+import '../controllers/ads.dart';
+
 class AdsListing extends StatefulWidget {
-  const AdsListing({Key? key}) : super(key: key);
+  AdsListing({Key? key}) : super(key: key);
 
   @override
   State<AdsListing> createState() => _AdsListingState();
 }
 
 class _AdsListingState extends State<AdsListing> {
-  var ads = {};
-  Future adsApi() async {
-    var response = await http.get(Uri.parse(Constants().apiURL + "/ads"),
-        headers: {"Accept": "application/json"});
-    setState(() {
-      ads = json.decode(response.body);
-    });
-
-    print(ads["data"][1]["title"]);
-    return "Success!";
-  }
+  final AdsController _adsController = Get.put(AdsController());
 
   @override
   void initState() {
-    adsApi();
+    print("\n"); //
+    _adsController.getAds();
     super.initState();
   }
 
@@ -53,19 +46,22 @@ class _AdsListingState extends State<AdsListing> {
         ],
       ),
       body: SafeArea(
-        child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 200,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                childAspectRatio: 0.70),
-            itemCount: ads["data"].length,
-            itemBuilder: (BuildContext context, int index) {
-              return ProductCard(
-                  imageSourse: ads["data"][index]["images"][0],
-                  productName: ads["data"][index]["title"],
-                  productPrice: ads["data"][index]["price"].toString());
-            }),
+        child: Obx(
+          () => GridView.builder(
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 200,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  childAspectRatio: 0.70),
+              itemCount: _adsController.ads.length,
+              itemBuilder: (BuildContext context, int index) {
+                return ProductCard(
+                    imageSourse:
+                        "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+                    productName: _adsController.ads[index]["title"],
+                    productPrice: _adsController.ads[index]["price"]);
+              }),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
