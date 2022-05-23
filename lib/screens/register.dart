@@ -34,7 +34,8 @@ class _RegisterState extends State<Register> {
   }
 
   insetToFirestore() {
-    FirebaseFirestore.instance.collection("accounts").add({
+    var uid = FirebaseAuth.instance.currentUser!.uid;
+    FirebaseFirestore.instance.collection("accounts").doc(uid).set({
       "uid": FirebaseAuth.instance.currentUser!.uid,
       "displayName": _nameCtrl.text,
       "email": _emailCtrl.text,

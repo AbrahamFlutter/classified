@@ -43,8 +43,9 @@ class _ProductCardState extends State<ProductCard> {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                width: double.infinity,
+                width: 300,
                 height: 70,
+                margin: EdgeInsets.all(10.0),
                 color: Color.fromARGB(117, 0, 0, 0),
                 child: Container(
                   padding: EdgeInsets.only(left: 15.0),

@@ -6,6 +6,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:itktask/custom-widget/product-list.dart';
 import 'package:http/http.dart' as http;
 
+import '../controllers/ads.dart';
 import '../util/constants.dart';
 
 class MyAds extends StatefulWidget {
@@ -16,26 +17,11 @@ class MyAds extends StatefulWidget {
 }
 
 class _MyAdsState extends State<MyAds> {
-  final nameData = GetStorage();
-  var ads = {};
-  var myAds = {};
-  int j = 0;
-  Future myAdsApi() async {
-    var response = await http.get(Uri.parse(Constants().apiURL + "/ads"),
-        headers: {"Accept": "application/json"});
-
-    setState(() {
-      ads = json.decode(response.body);
-    });
-
-    print(myAds);
-
-    return "Success!";
-  }
+  final AdsController _adsController = Get.put(AdsController());
 
   @override
   void initState() {
-    myAdsApi();
+    _adsController.getMyAds();
     super.initState();
   }
 
@@ -49,16 +35,19 @@ class _MyAdsState extends State<MyAds> {
           children: [
             Expanded(
               child: Container(
-                child: ListView.builder(
-                    itemCount: ads["data"].length,
-                    itemBuilder: (BuildContext context, int index) {
-                     
-                      return ProductList(
-                          imageURL: ads["data"][index]["images"][0],
-                          title: ads["data"][index]["title"],
-                          price: ads["data"][index]["price"],
-                          timesAgo: "5 days");
-                    }),
+                child: Obx(
+                  () => ListView.builder(
+                      itemCount: _adsController.myAds.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return ProductList(
+                            imageURL: _adsController.myAds[index]["imageURL"],
+                            title: _adsController.myAds[index]["title"],
+                            price: _adsController.myAds[index]["price"],
+                            timesAgo: "2 hours",
+                            //_adsController.myAds[index]["createdAt"],
+                            mobile: _adsController.myAds[index]["mobile"]);
+                      }),
+                ),
               ),
             ),
           ],

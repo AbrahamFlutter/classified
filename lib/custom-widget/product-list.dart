@@ -7,16 +7,18 @@ import '../screens/edit-ad.dart';
 class ProductList extends StatelessWidget {
   final String imageURL;
   final String title;
-  final int price;
+  final String price;
   final String timesAgo;
+  final String mobile;
 
-  const ProductList({
-    Key? key,
-    required this.imageURL,
-    required this.title,
-    required this.price,
-    required this.timesAgo,
-  }) : super(key: key);
+  const ProductList(
+      {Key? key,
+      required this.imageURL,
+      required this.title,
+      required this.price,
+      required this.timesAgo,
+      required this.mobile})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +27,8 @@ class ProductList extends StatelessWidget {
         Get.to(EditAd(
           photo: imageURL,
           textToTitle: title,
-          textToPhone: "+9898745321",
-          textToPrice: price.toString(),
+          textToPhone: mobile,
+          textToPrice: price,
         ));
       },
       child: Container(
@@ -39,7 +41,7 @@ class ProductList extends StatelessWidget {
           Container(
             height: 100,
             width: 100,
-            child: Image.asset(imageURL),
+            child: Image.network(imageURL),
           ),
           SizedBox(width: 8),
           Container(

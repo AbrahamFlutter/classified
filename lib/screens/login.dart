@@ -6,6 +6,7 @@ import 'package:itktask/screens/ads-listing.dart';
 import 'package:itktask/screens/register.dart';
 import 'package:http/http.dart' as http;
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class Login extends StatefulWidget {
   const Login({
@@ -34,6 +35,23 @@ class _LoginState extends State<Login> {
     }).catchError((e) => print(e));
   }
 
+  loginGoogle() async {
+    // GoogleSignIn(scopes: ["email"]).signIn().then((res) {
+    //   print(res!.displayName);
+    // }).catchError((e){
+    //   print(e);
+    // });
+    var account = await GoogleSignIn(scopes: ["email"]).signIn();
+    var auth = await account!.authentication;
+    var credential = GoogleAuthProvider.credential(
+      accessToken: auth.accessToken,
+      idToken: auth.idToken,
+    );
+    var userRef = await FirebaseAuth.instance.signInWithCredential(credential);
+    print(userRef.user);
+    Get.to(AdsListing());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,19 +61,19 @@ class _LoginState extends State<Login> {
             Container(
               // cover "photo"
               width: double.infinity,
-              height: 400,
+              height: 350,
               child: Stack(
                 children: [
                   Container(
                     width: double.infinity,
-                    height: 400,
+                    height: 350,
                     child: Image.asset(
                       "assets/images/background.png",
                       fit: BoxFit.cover,
                     ),
                   ),
                   Container(
-                    height: 400,
+                    height: 350,
                     padding: EdgeInsets.all(12.0),
                     child: Center(
                       child: Image.asset(
@@ -98,6 +116,23 @@ class _LoginState extends State<Login> {
                           loginFirebase();
                         },
                         child: Text("Login", style: TextStyle(fontSize: 20)),
+                        style: ElevatedButton.styleFrom(
+                          primary: const Color.fromARGB(225, 255, 102, 14),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          loginGoogle();
+                        },
+                        child: Row(children: [
+                          Image.asset("assets/images/google.png"),
+                          Text("Login With Google",
+                              style: TextStyle(fontSize: 20)),
+                        ]),
                         style: ElevatedButton.styleFrom(
                           primary: const Color.fromARGB(225, 255, 102, 14),
                         ),

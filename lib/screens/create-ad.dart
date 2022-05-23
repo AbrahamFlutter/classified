@@ -11,6 +11,7 @@ class CreateAd extends StatelessWidget {
   final TextEditingController _priceCtrl = TextEditingController();
   final TextEditingController _mobileCtrl = TextEditingController();
   final TextEditingController _descriptionCtrl = TextEditingController();
+  //var _imageURL = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +29,9 @@ class CreateAd extends StatelessWidget {
               style: OutlinedButton.styleFrom(
                   side: BorderSide(color: Colors.grey),
                   padding: EdgeInsets.all(20.0)),
-              onPressed: () {},
+              onPressed: () {
+                _adsController.uploadImage();
+              },
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: const [
@@ -41,7 +44,7 @@ class CreateAd extends StatelessWidget {
                       "Tap to upload",
                       style: TextStyle(
                           color: Color.fromARGB(255, 116, 116, 116),
-                          fontSize: 20),
+                          fontSize: 16),
                     )
                   ]),
             ),

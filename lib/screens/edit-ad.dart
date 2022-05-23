@@ -42,7 +42,7 @@ class EditAd extends StatelessWidget {
                     "Tap to upload",
                     style: TextStyle(
                         color: Color.fromARGB(255, 116, 116, 116),
-                        fontSize: 20),
+                        fontSize: 16),
                   )
                 ],
               ),
@@ -66,7 +66,7 @@ class EditAd extends StatelessWidget {
                                 border: Border.all(
                               color: Colors.grey,
                             )),
-                            child: Image.asset(
+                            child: Image.network(
                               photo,
                               fit: BoxFit.cover,
                             )),
@@ -107,7 +107,7 @@ class EditAd extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: "Price",
                       floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: textToPrice,
+                      hintText: "\$ $textToPrice",
                       hintStyle: const TextStyle(fontWeight: FontWeight.bold),
                       border: OutlineInputBorder(),
                     ),

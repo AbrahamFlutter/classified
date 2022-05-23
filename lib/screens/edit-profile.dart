@@ -1,14 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:itktask/screens/login.dart';
 import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:get_storage/get_storage.dart';
 
+import '../controllers/ads.dart';
 import '../util/constants.dart';
 
 class EditProfile extends StatefulWidget {
@@ -22,30 +23,74 @@ class _EditProfileState extends State<EditProfile> {
   final TextEditingController _nameCtrl = TextEditingController();
   final TextEditingController _emailCtrl = TextEditingController();
   final TextEditingController _mobileCtrl = TextEditingController();
-  String _imageProfile = "";
-
+  String _imageProfile =
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8_RExXJpUqoSwMKLCJzbGxYkJ5EFnRTecKA&usqp=CAU";
+  var userObj = {};
   logOutFirebase() {
     FirebaseAuth.instance.signOut().then((value) {
       Get.offAll(Login());
     });
   }
 
+  getUserData() {
+    FirebaseFirestore.instance
+        .collection("accounts")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get()
+        .then((res) {
+      setState(
+        () {
+          userObj = {"id": res.id, ...res.data()!};
+          print(userObj);
+          _nameCtrl.text = userObj['displayName'];
+          _emailCtrl.text = userObj['email'];
+          _mobileCtrl.text = userObj['mobile'];
+          _imageProfile = userObj['imageUrl'];
+        },
+      );
+    });
+  }
+
+  updateProfile() {
+    FirebaseFirestore.instance
+        .collection("accounts")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .update({
+      "displayName": _nameCtrl.text,
+      "mobile": _mobileCtrl.text,
+      "email": _emailCtrl.text,
+      "imageUrl": _imageProfile
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getUserData();
+  }
+
   pickImage() async {
     var image = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (image != null) {
-      setState(() {
-        _imageProfile = image.path;
-      });
+
+    if (image!.path.length != 0) {
       //upload image
-      var request = http.MultipartRequest(
-          "POST", Uri.parse("https://adlisting.herokuapp.com/upload/profile"));
-      request.files
-          .add(await http.MultipartFile.fromPath("avatar", image.path));
-      var response = await request.send();
-      var resData = await response.stream.toBytes();
-      var resString = String.fromCharCodes(resData);
-      var jsonObj = json.decode(resString);
-      print(jsonObj["data"]["path"]);
+      File file = File(image.path);
+      FirebaseStorage.instance
+          .ref()
+          .child("uploads")
+          .child(FirebaseAuth.instance.currentUser!.uid)
+          .putFile(file)
+          .then((response) {
+        print("\nUploaded");
+        response.ref.getDownloadURL().then((url) => setState(() {
+              _imageProfile = url;
+            }));
+        FirebaseFirestore.instance
+            .collection("accounts")
+            .doc(FirebaseAuth.instance.currentUser!.uid)
+            .update({"imageUrl": _imageProfile});
+      }).catchError((e) => print("Error upload"));
     } else {
       print("no image picked");
     }
@@ -71,15 +116,12 @@ class _EditProfileState extends State<EditProfile> {
                 child: Stack(children: [
                   ClipOval(
                     //like circle avatar
-                    child: _imageProfile != ""
-                        ? Image.file(File(_imageProfile),
-                            fit: BoxFit.cover, width: 150, height: 150)
-                        : Image.network(
-                            "imgProfile",
-                            fit: BoxFit.cover,
-                            width: 150,
-                            height: 150,
-                          ),
+                    child: Image.network(
+                      _imageProfile,
+                      fit: BoxFit.cover,
+                      width: 150,
+                      height: 150,
+                    ),
                   ),
                   Align(
                     alignment: Alignment.bottomRight,
@@ -117,8 +159,8 @@ class _EditProfileState extends State<EditProfile> {
                       decoration: InputDecoration(
                         labelText: "Email Address",
                         floatingLabelBehavior: FloatingLabelBehavior.always,
-                        hintText: "email",
-                        hintStyle: TextStyle(fontWeight: FontWeight.bold),
+                        //hintText: "email",
+                        //hintStyle: TextStyle(fontWeight: FontWeight.bold),
                         border: OutlineInputBorder(),
                       ),
                       keyboardType: TextInputType.emailAddress,
@@ -138,7 +180,9 @@ class _EditProfileState extends State<EditProfile> {
                       width: double.infinity,
                       height: 50,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          updateProfile();
+                        },
                         child: const Text("Update profile",
                             style: TextStyle(fontSize: 20)),
                         style: ElevatedButton.styleFrom(

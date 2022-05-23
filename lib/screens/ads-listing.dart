@@ -39,7 +39,8 @@ class _AdsListingState extends State<AdsListing> {
               Get.to(Settings());
             },
             child: CircleAvatar(
-              backgroundImage: AssetImage("assets/images/sundar.png"),
+              backgroundImage: NetworkImage(
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8_RExXJpUqoSwMKLCJzbGxYkJ5EFnRTecKA&usqp=CAU"),
               radius: 20,
             ),
           )
@@ -56,10 +57,9 @@ class _AdsListingState extends State<AdsListing> {
               itemCount: _adsController.ads.length,
               itemBuilder: (BuildContext context, int index) {
                 return ProductCard(
-                    imageSourse:
-                        "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+                    imageSourse: _adsController.ads[index]["imageURL"],
                     productName: _adsController.ads[index]["title"],
-                    productPrice: _adsController.ads[index]["price"]);
+                    productPrice: "\$" + _adsController.ads[index]["price"]);
               }),
         ),
       ),
